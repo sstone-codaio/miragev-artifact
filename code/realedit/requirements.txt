@@ -1,0 +1,6 @@
+numpy>=1.24.0
+opencv-python-headless>=4.9.0.80
+imageio>=2.34.0
+imageio-ffmpeg>=0.5.1
+pyyaml>=6.0.0
+tqdm>=4.66.0

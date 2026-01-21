@@ -1,0 +1,8 @@
+dataset: YOUR_ORG/MIRAGE-V
+split: test
+adapter: gemini_video
+gemini_model: gemini-2.5-flash
+mode: full_video
+seed: 0
+cache_dir: .cache/gemini
+out_dir: runs/gemini25flash

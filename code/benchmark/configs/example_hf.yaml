@@ -1,0 +1,8 @@
+dataset: YOUR_ORG/MIRAGE-V
+split: test
+adapter: hf
+model_name_or_path: Qwen/Qwen2.5-VL-7B-Instruct
+mode: full_video
+num_frames: 8
+seed: 0
+out_dir: runs/qwen25vl_7b_full

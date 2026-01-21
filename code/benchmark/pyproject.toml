@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=68.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "miragev-benchmark"
+version = "0.1.0"
+description = "Reference evaluation harness for the MIRAGE-V video physics-checking benchmark"
+readme = "README.md"
+requires-python = ">=3.9"
+license = {text = "Apache-2.0"}
+authors = [{name = "MIRAGE-V Contributors"}]
+dependencies = [
+  "datasets>=2.19.0",
+  "tqdm>=4.66.0",
+  "numpy>=1.24.0",
+  "pillow>=10.0.0",
+  "pyyaml>=6.0.0",
+]
+
+[project.optional-dependencies]
+hf = ["torch>=2.1.0", "transformers>=4.42.0", "accelerate>=0.33.0", "safetensors>=0.4.0"]
+video = ["decord>=0.6.0", "opencv-python-headless>=4.9.0.80"]
+openai = ["openai>=1.40.0"]
+gemini = ["google-genai>=0.3.0"]
+
+[tool.setuptools]
+packages = ["miragev", "miragev.models"]

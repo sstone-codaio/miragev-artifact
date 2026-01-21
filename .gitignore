@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+runs/
+data/
+.cache/
+paper/*.aux
+paper/*.bbl
+paper/*.blg
+paper/*.log
+paper/*.out
+paper/*.toc

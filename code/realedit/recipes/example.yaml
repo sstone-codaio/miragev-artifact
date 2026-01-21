@@ -1,0 +1,115 @@
+# Example recipes (edit to point to your own videos)
+#
+# IMPORTANT:
+# - Use videos you have rights to edit.
+# - For cross_splice and pair_only modules, source videos should be:
+#   * same resolution
+#   * same camera view / same scene layout
+#   * ideally same fps
+
+modules:
+  # TR-ALI: make a discontinuity by replacing a short window with frames from later ("time jump")
+  - module: TR-ALI
+    kind: intra_timejump
+    name: tr_ali_timejump
+    source: /path/to/your/static_camera_ball_roll.mp4
+    window_s: [1.8, 2.4]
+    duration_s: [0.10, 0.20]
+    jump_ahead_s: [0.6, 1.2]
+    question:
+      type: yesno
+      prompt: Does any object move discontinuously (jump/teleport) at any point?
+      # Convention in our MIRAGE-V harness: YES=1, NO=0
+      answer_A: 0
+      answer_B: 1
+      critical_window_s: [1.8, 2.6]
+
+  # TR-ORDER: swap two temporal segments inside one video
+  - module: TR-ORDER
+    kind: intra_swap
+    name: tr_order_swap
+    source: /path/to/your_two_events_video.mp4
+    seg1_s: [1.0, 1.2]
+    seg2_s: [1.7, 2.0]
+    seg_len_s: [0.2, 0.35]
+    question:
+      type: yesno
+      prompt: Does event A happen before event B?
+      answer_A: 1
+      answer_B: 0
+      critical_window_s: [0.8, 2.6]
+
+  # P-OCC via cross_splice:
+  # Record two takes:
+  #   take A: hidden obstacle present (ball bounces back behind occluder)
+  #   take B: no obstacle (ball continues)
+  # Then splice pre-occlusion from A with post-occlusion from B to make an inconsistent hybrid.
+  - module: P-OCC
+    kind: cross_splice
+    name: p_occ_occlusion_splice
+    sources_A:
+      - /path/to/take_with_hidden_obstacle.mp4
+    sources_B:
+      - /path/to/take_without_obstacle.mp4
+    cut_s: [1.4, 1.8]   # choose cut during full occlusion
+    question:
+      type: yesno
+      prompt: Is there an obstacle behind the occluder that the moving object collides with?
+      answer_A: 1
+      answer_B: 0
+      critical_window_s: [1.2, 2.2]
+
+  # PH-INVAR-ENERGY via cross_splice:
+  # Record two bounces with same pre-drop height but different bounce height.
+  # Splicing pre-impact of one with post-impact of the other can create apparent energy gain/loss.
+  - module: PH-INVAR-ENERGY
+    kind: cross_splice
+    name: energy_splice
+    sources_A:
+      - /path/to/bounce_normal.mp4
+    sources_B:
+      - /path/to/bounce_higher.mp4
+    cut_s: [1.2, 1.5]   # right at impact
+    question:
+      type: yesno
+      prompt: Does the object gain energy (bounce higher) without a visible external cause?
+      answer_A: 0
+      answer_B: 1
+      critical_window_s: [1.0, 2.2]
+
+  # TM-ID (ROI swap) – hard, but sometimes works:
+  # Requires two similar objects and an occlusion; provide init bboxes for each object.
+  - module: TM-ID
+    kind: roi_swap
+    name: tm_id_roi_swap
+    source: /path/to/two_objects_with_occluder.mp4
+    bbox1: [120, 260, 90, 90]
+    bbox2: [380, 260, 90, 90]
+    use_tracker: true
+    swap_s: [2.0, 2.3]
+    swap_len_s: [0.8, 1.2]
+    question:
+      type: yesno
+      prompt: Does the object that starts on the LEFT end on the LEFT?
+      answer_A: 1
+      answer_B: 0
+      critical_window_s: [1.8, 3.5]
+
+  # PH-LATENT-FRICTION / MASS: not good as pixel edits.
+  # Instead: pair two real takes (same setup, different physical parameter).
+  - module: PH-LATENT-FRICTION
+    kind: pair_only
+    name: friction_pair
+    sources_A:
+      - /path/to/high_friction_take.mp4
+    sources_B:
+      - /path/to/low_friction_take.mp4
+    max_start_s: 0.0
+    question:
+      type: mcq
+      prompt: Which surface has higher friction?
+      options: ["Left", "Right", "Same"]
+      answer_A: 0
+      answer_B: 1
+      critical_window_s: [0.8, 3.5]
+

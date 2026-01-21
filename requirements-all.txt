@@ -1,0 +1,23 @@
+# Generator
+numpy>=1.24.0
+pybullet>=3.2.6
+pillow>=10.0.0
+imageio>=2.34.0
+imageio-ffmpeg>=0.5.1
+tqdm>=4.66.0
+
+# Benchmark
+datasets>=2.19.0
+pyyaml>=6.0.0
+opencv-python-headless>=4.9.0.80
+decord>=0.6.0
+
+# Optional HF models
+torch>=2.1.0
+transformers>=4.42.0
+accelerate>=0.33.0
+safetensors>=0.4.0
+
+# Optional APIs
+openai>=1.40.0
+google-genai>=0.3.0

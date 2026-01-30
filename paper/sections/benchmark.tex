@@ -1,0 +1,39 @@
+\section{MIRAGE-V Benchmark}
+\subsection{Taxonomy modules}
+MIRAGE-V organizes physics-checking failures into a small set of taxonomy modules. 
+In this paper we use \NumModules modules spanning temporal and physical reasoning:
+\begin{itemize}[leftmargin=*]
+  \item \textbf{TR-ALI} (temporal aliasing): brief violations such as micro-teleportation that can be missed under sparse sampling.
+  \item \textbf{TR-ORDER} (temporal order): event ordering differences under minimal edits.
+  \item \textbf{TM-ID} (tracking/identity): identity drift across occlusion or viewpoint changes.
+  \item \textbf{P-OCC} (hidden interactions): outcomes determined by occluded objects or obstacles.
+  \item \textbf{R-COUNT} (relational counting): reasoning about the number of salient events/objects.
+  \item \textbf{PH-LATENT-MASS} (latent properties): inferring mass from dynamics.
+  \item \textbf{PH-LATENT-FRICTION} (latent properties): inferring friction from dynamics.
+  \item \textbf{PH-INVAR-ENERGY} (invariants): conservation-style checks (e.g., uncaused energy gain).
+  \item \textbf{C-CHAIN} (causal chains): multi-step propagation (e.g., domino chain completion).
+  \item \textbf{PH-COUNTER} (counterfactual): outcome changes under a specified intervention.
+\end{itemize}
+
+\subsection{Minimal-change paired construction}
+Each MIRAGE-V pair shares the same context (camera, background, objects) but differs by a single intervention:
+\begin{itemize}[leftmargin=*]
+  \item \textbf{Parameter edits} (physically valid): swap mass, swap friction, add/remove a hidden obstacle.
+  \item \textbf{State edits} (physically invalid on purpose): micro-teleportation, post-impact velocity boosts.
+\end{itemize}
+Paired construction enables \emph{pair accuracy} (both $A$ and $B$ correct) and supports causal attribution in error analysis.
+
+\subsection{Schema}
+Each example contains: \texttt{pair\_id}, \texttt{pair\_role} ($A$ or $B$), \texttt{prompt}, \texttt{answer\_index}, \texttt{video\_path}, \texttt{module}, and a \texttt{critical\_window} specifying when decisive evidence occurs.
+
+\subsection{Evaluation metrics}
+We report:
+\begin{itemize}[leftmargin=*]
+  \item \textbf{Accuracy} on individual examples.
+  \item \textbf{Pair accuracy} on minimal-change pairs (correct only if both $A$ and $B$ are correct).
+  \item \textbf{Module breakdowns} for diagnostic analysis.
+\end{itemize}
+
+\subsection{Shortcut audits and sampling robustness}
+To ensure MIRAGE-V measures video reasoning rather than shortcuts, we recommend reporting: \emph{text-only}, \emph{single-frame}, \emph{shuffled-frames}, and \emph{sparse-vs-dense} sampling.
+The released artifact includes code to run these audits and to stress-test micro-violations using the \texttt{critical\_window}.

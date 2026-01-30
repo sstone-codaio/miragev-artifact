@@ -15,7 +15,7 @@ This artifact repository contains everything you need to:
 pip install -r code/generator/requirements.txt
 
 python code/generator/generate_miragev.py \
-  --out_root data/miragev_synth \
+  --out_root data \
   --pairs_per_taxonomy 50 \
   --fps 30 \
   --sim_hz 240 \
@@ -28,7 +28,7 @@ python code/generator/generate_miragev.py \
 ```bash
 pip install -r code/benchmark/requirements.txt
 
-cd data/miragev_synth
+cd data
 python ../code/benchmark/evaluate.py \
   --dataset annotations/miragev.jsonl \
   --adapter hf \

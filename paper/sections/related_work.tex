@@ -1,0 +1,18 @@
+\section{Related Work}
+\paragraph{Video-language understanding benchmarks.}
+A growing body of work evaluates multi-modal models on video question answering and temporal reasoning, including TVQA \cite{lei2018tvqa}, NExT-QA \cite{xiao2021nextqa}, EgoSchema \cite{mangalam2023egoschema}, MVBench \cite{li2023mvbench}, and Video-MME \cite{fu2024videomme}.
+These benchmarks provide broad coverage across domains and temporal scales, but are not designed around \emph{minimal physical interventions} and often permit shortcuts (e.g., static cues or language priors) that reduce their sensitivity to subtle physics violations.
+
+\paragraph{Physics and intuitive-physics datasets.}
+Synthetic physics datasets such as CLEVRER \cite{yi2019clevrer} probe causal, predictive, and counterfactual reasoning about object interactions.
+IntPhys \cite{riochet2018intphys} and IntPhys~2 \cite{bordes2025intphys2} evaluate intuitive physics via violation-of-expectation tests.
+Physion++ \cite{tung2023physionpp} emphasizes inference of \emph{latent} physical properties (mass, friction, elasticity) from observed dynamics.
+MIRAGE-V is complementary: we focus on \emph{verification} of minimal-change paired clips and provide taxonomy labels plus a critical window to audit sampling sensitivity.
+
+\paragraph{Benchmarks for ``world models'' and generative video.}
+WorldModelBench \cite{li2025worldmodelbench} evaluates video generation models along instruction following and physics adherence, leveraging large-scale human preference labels.
+While it targets generated videos and preference judgments, MIRAGE-V targets \emph{observed} clips and asks models to answer falsifiable questions about specific physical violations, with paired construction enabling rigorous discrimination metrics.
+
+\paragraph{Taxonomy-driven evaluation.}
+RF100-VL \cite{robicheaux2025roboflow100vl} illustrates how taxonomy and dataset composition can expose out-of-distribution weaknesses in vision-language models.
+MIRAGE-V applies a similar philosophy to video physics checking: a compact, interpretable taxonomy and controlled interventions provide a diagnostic view of model failure modes.

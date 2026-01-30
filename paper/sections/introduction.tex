@@ -1,0 +1,21 @@
+\section{Introduction}
+Frontier video-language models can answer a wide range of questions about complex scenes, but they frequently fail on \emph{physics checking}: detecting subtle inconsistencies such as discontinuous motion, identity swaps under occlusion, or uncaused changes in energy or momentum.
+These failure modes matter in high-stakes settings (robotics, surveillance, simulation validation), where a system must not only describe what it sees but also flag implausible or impossible events.
+
+Existing video understanding benchmarks provide broad coverage, but many tasks can be solved with weak temporal reasoning (e.g., static frames, language priors, or dataset artifacts), which reduces diagnostic value.
+Conversely, physics-focused datasets often emphasize \emph{prediction} (``what happens next?'') rather than \emph{verification} (``did an impossible event occur?'') or they focus on a narrow set of physical principles.
+Recent work on evaluating video \emph{generation} models as world models highlights the importance of physics adherence, but typically evaluates \emph{generated} videos and uses human preference labels \cite{li2025worldmodelbench}.
+Our focus is complementary: we evaluate \emph{video reasoning} models on whether they can \emph{detect} minimal physical inconsistencies in observed clips.
+
+\paragraph{Benchmark design principles.}
+MIRAGE-V is built around three principles:
+(1) \textbf{Minimal-change pairs} --- each datapoint is part of an $A/B$ pair that shares context but differs by a single intervention, enabling causal attribution and the \emph{pair accuracy} metric;
+(2) \textbf{Taxonomy-driven failures} --- interventions are mapped to a small set of interpretable modules (taxonomy categories) covering temporal, occlusion, latent-parameter, invariant, and causal phenomena;
+(3) \textbf{Sampling-robust evaluation} --- each example provides a critical window when decisive evidence occurs, supporting both sparse and dense sampling protocols.
+
+\paragraph{Contributions.}
+We contribute:
+(i) \textbf{MIRAGE-V}, a benchmark suite of minimal-change video pairs with taxonomy labels and critical-window annotations;
+(ii) an \textbf{open-source generator} that produces scalable synthetic clips and optional real-video edits aligned to the taxonomy;
+(iii) a \textbf{unified evaluation harness} for open-weight and API-based models with standardized prompting, metrics, and shortcut audits;
+(iv) an empirical baseline on three representative models demonstrating that physics checking remains challenging, especially under sparse frame sampling.

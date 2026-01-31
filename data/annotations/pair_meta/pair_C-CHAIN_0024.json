@@ -1,0 +1,13 @@
+{
+  "pair_id": "C-CHAIN_0024",
+  "module": "C-CHAIN",
+  "critical_window": [
+    1.0,
+    4.5
+  ],
+  "params": {
+    "spacing_A": 0.12727477220019973,
+    "spacing_B": 0.24054317329497862,
+    "ball_v": 1.335781355952277
+  }
+}

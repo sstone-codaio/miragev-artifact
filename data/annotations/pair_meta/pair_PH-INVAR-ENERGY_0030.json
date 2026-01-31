@@ -1,0 +1,15 @@
+{
+  "pair_id": "PH-INVAR-ENERGY_0030",
+  "module": "PH-INVAR-ENERGY",
+  "critical_window": [
+    1.4435163734117848,
+    1.7435163734117847
+  ],
+  "params": {
+    "radius": 0.061520900533295744,
+    "restitution": 0.6848588050683163,
+    "drop_h": 1.0028873595138177,
+    "boost_t": 1.5935163734117848,
+    "boost_dv": 0.8940785044889149
+  }
+}

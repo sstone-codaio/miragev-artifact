@@ -1,0 +1,22 @@
+{
+  "pair_id": "PH-COUNTER_0034",
+  "module": "PH-COUNTER",
+  "critical_window": [
+    0.8,
+    4.0
+  ],
+  "params": {
+    "cfA": false,
+    "cfB": true,
+    "ballA_start": [
+      0.0,
+      -0.9,
+      0.05396211155215151
+    ],
+    "ballB_start": [
+      0.30883874449107607,
+      -0.9,
+      0.05396211155215151
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "pair_id": "R-COUNT_0012",
+  "module": "R-COUNT",
+  "critical_window": [
+    0.0,
+    5.0
+  ],
+  "params": {
+    "vA": 0.7876649856475578,
+    "vB": 1.1998309260922073,
+    "hitsA": 1,
+    "hitsB": 1
+  }
+}

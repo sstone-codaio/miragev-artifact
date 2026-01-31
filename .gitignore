@@ -6,7 +6,8 @@ __pycache__/
 .venv/
 venv/
 runs/
-data/
+out/
+scripts/
 .cache/
 paper/*.aux
 paper/*.bbl

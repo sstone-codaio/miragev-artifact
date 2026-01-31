@@ -1,0 +1,13 @@
+{
+  "pair_id": "P-OCC_0034",
+  "module": "P-OCC",
+  "critical_window": [
+    1.0,
+    2.0
+  ],
+  "params": {
+    "radius": 0.05872737690320522,
+    "v": 1.1554485220783999,
+    "obstacle": true
+  }
+}

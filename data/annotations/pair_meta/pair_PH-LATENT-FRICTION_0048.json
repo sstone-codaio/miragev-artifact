@@ -1,0 +1,14 @@
+{
+  "pair_id": "PH-LATENT-FRICTION_0048",
+  "module": "PH-LATENT-FRICTION",
+  "critical_window": [
+    0.9428562141054267,
+    3.5428562141054267
+  ],
+  "params": {
+    "mu_high": 0.6502127221019209,
+    "mu_low": 0.06400748826266646,
+    "push_t": 1.0428562141054267,
+    "v_push": 1.265522622279886
+  }
+}

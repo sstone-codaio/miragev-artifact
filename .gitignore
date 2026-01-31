@@ -1,3 +1,6 @@
+.DS_Store
+**/.DS_Store
+
 __pycache__/
 *.pyc
 .venv/
@@ -11,3 +14,7 @@ paper/*.blg
 paper/*.log
 paper/*.out
 paper/*.toc
+paper/*.fdb_latexmk
+paper/*.fls
+paper/*.synctex.gz
+miragev-artifact.code-workspace
